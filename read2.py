@@ -11,9 +11,11 @@ word_list = re.findall(r'\b[a-zöäü]{4,20}\b', text)
 
 word_freq = {}
 
-for word in word_list:
+ignore = {'nicht','sich','hatte','dass','aber','eine','einem','eines','auch'}
 
-    word_freq[word] = word_freq.get(word, 0) + 1
+for word in word_list:
+	if word not in ignore:
+		word_freq[word] = word_freq.get(word, 0) + 1
 	
 result = sorted(word_freq.items(), key = lambda x:x[1], reverse = True)
 
